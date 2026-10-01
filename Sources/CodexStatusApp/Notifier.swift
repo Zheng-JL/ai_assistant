@@ -119,9 +119,13 @@ final class Notifier: NSObject, UNUserNotificationCenterDelegate {
         let center = UNUserNotificationCenter.current()
         registerCategories(center)
         _ = try? await center.requestAuthorization(options: [.alert, .sound])
-        let settings = await center.notificationSettings()
-        print("authorization(0=未决定,1=拒绝,2=允许):", settings.authorizationStatus.rawValue,
-              "alert:", settings.alertSetting.rawValue, "sound:", settings.soundSetting.rawValue)
+        let (authorization, alert, sound) = await withCheckedContinuation { (continuation: CheckedContinuation<(Int, Int, Int), Never>) in
+            center.getNotificationSettings { settings in
+                continuation.resume(returning: (settings.authorizationStatus.rawValue, settings.alertSetting.rawValue,
+                                                settings.soundSetting.rawValue))
+            }
+        }
+        print("authorization(0=未决定,1=拒绝,2=允许):", authorization, "alert:", alert, "sound:", sound)
         let sample = StatusEvent(kind: .finished, sessionID: "00000000-0000-0000-0000-000000000000",
                                  title: "示例：修复登录失败的问题", project: "my-app",
                                  occurredAt: Date(), duration: 245)

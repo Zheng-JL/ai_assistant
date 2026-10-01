@@ -15,8 +15,12 @@ extension MenuController {
         input.hasIcon = bundle.url(forResource: "AppIcon", withExtension: "icns") != nil
 
         if bundle.bundleURL.pathExtension == "app" {
-            let settings = await UNUserNotificationCenter.current().notificationSettings()
-            input.notificationAuthorization = settings.authorizationStatus.rawValue
+            // Only the integer leaves the callback: `UNNotificationSettings` is not Sendable in older SDKs.
+            input.notificationAuthorization = await withCheckedContinuation { (continuation: CheckedContinuation<Int, Never>) in
+                UNUserNotificationCenter.current().getNotificationSettings { settings in
+                    continuation.resume(returning: settings.authorizationStatus.rawValue)
+                }
+            }
         } else {
             input.notificationAuthorization = nil
         }

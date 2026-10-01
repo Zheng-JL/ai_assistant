@@ -11,7 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Toolchain
-        run: swift --version
+        run: |
+          swift --version
+          xcodebuild -version
+      - name: Report compiler errors as annotations
+        run: echo "::add-matcher::.github/swift-problem-matcher.json"
       - name: Unit tests (synthetic data only)
         run: swift test
       - name: Release build
