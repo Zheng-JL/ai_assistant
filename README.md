@@ -18,6 +18,16 @@
 
 > **Read this first — compatibility.** The app reads *undocumented* local files of Codex Desktop and Claude Desktop. It has been verified only on **macOS 26.6 (Apple Silicon)** with **Codex Desktop 26.924.22138** and **Claude Desktop 2.16120.0** (Claude Code engine 2.1.284). A future update of either app can change those formats. The app is built to show **unknown** (`?` / `--`) rather than a wrong number, and a built-in health check tells you why — but expect to need an update after big releases.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/menu.png" width="300" alt="The menu: running and unread counts, today's totals, tokens, templates, settings">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/menu-templates.png" width="420" alt="The prompt-template menu with its “More” submenu">
+</p>
+
+<sub>macOS 26.6, light mode. The interface is in Chinese; <code>CodexStatus --dump-menu</code> prints the exact menu tree.</sub>
+
 ## Why
 
 Waiting on AI coding tools wastes time in three ways: you watch a screen until a task is done, an assistant sits stopped waiting for your approval, and a conversation quietly gets so long that the model forgets earlier context. Buddy puts all of that in the menu bar and notifies you only when something needs you.

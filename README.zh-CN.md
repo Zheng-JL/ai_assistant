@@ -18,6 +18,16 @@
 
 > **使用前请先看——兼容性。** 本工具读取的是 Codex Desktop 与 Claude Desktop 的**未公开本地文件**。目前只在 **macOS 26.6（Apple Silicon）**、**Codex Desktop 26.924.22138**、**Claude Desktop 2.16120.0**（Claude Code 引擎 2.1.284）上验证过。这两个应用以后更新都可能改变这些格式。工具的原则是“读不准就显示未知（`?` / `--`），绝不给错误的数字”，并自带健康检查告诉你原因；但大版本更新后，仍可能需要升级本工具。
 
+## 截图
+
+<p align="center">
+  <img src="docs/screenshots/menu.png" width="300" alt="菜单：运行与未读数量、今日汇总、Token、提示词、设置">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/menu-templates.png" width="420" alt="提示词菜单及其“更多”子菜单">
+</p>
+
+<sub>macOS 26.6，浅色模式。`CodexStatus --dump-menu` 可打印当前真实的完整菜单树。</sub>
+
 ## 为什么做它
 
 用 AI 编程时，时间主要浪费在三处：盯着屏幕等任务跑完；AI 停下来等你批准，你却没发现；对话悄悄变得太长，模型开始遗忘前面的内容。搭子把这些信息放进菜单栏，只在需要你的时候提醒你。
