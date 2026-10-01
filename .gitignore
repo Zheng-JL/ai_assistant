@@ -1,3 +1,7 @@
+# Documentation lives in docs/. Some people ignore "docs" in their global gitignore, which would silently
+# keep these files out of the repository, so allow it explicitly.
+!docs/
+
 .build/
 .swiftpm/
 dist/
