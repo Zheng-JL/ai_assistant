@@ -118,7 +118,11 @@ final class Notifier: NSObject, UNUserNotificationCenterDelegate {
         guard Bundle.main.bundleURL.pathExtension == "app" else { print("not running from an .app bundle"); return }
         let center = UNUserNotificationCenter.current()
         registerCategories(center)
-        _ = try? await center.requestAuthorization(options: [.alert, .sound])
+        // Callback style throughout: the async variants would send the non-Sendable center across actors,
+        // which older SDKs reject under Swift 6.
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            center.requestAuthorization(options: [.alert, .sound]) { _, _ in continuation.resume() }
+        }
         let (authorization, alert, sound) = await withCheckedContinuation { (continuation: CheckedContinuation<(Int, Int, Int), Never>) in
             center.getNotificationSettings { settings in
                 continuation.resume(returning: (settings.authorizationStatus.rawValue, settings.alertSetting.rawValue,
@@ -131,10 +135,11 @@ final class Notifier: NSObject, UNUserNotificationCenterDelegate {
                                  occurredAt: Date(), duration: 245)
         let content = makeContent(notificationCopy(for: sample, provider: "Claude"), style: .finished,
                                   userInfo: [:], thread: nil)
-        do {
-            try await center.add(UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil))
-            print("已提交通知")
-        } catch { print("提交失败:", error) }
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        let failure: String? = await withCheckedContinuation { (continuation: CheckedContinuation<String?, Never>) in
+            center.add(request) { error in continuation.resume(returning: error.map { "\($0)" }) }
+        }
+        print(failure.map { "提交失败: \($0)" } ?? "已提交通知")
         try? await Task.sleep(for: .seconds(3))
     }
 
