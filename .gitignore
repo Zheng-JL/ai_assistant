@@ -1,0 +1,7 @@
+.build/
+.swiftpm/
+dist/
+.DS_Store
+
+# Local notes that are not part of the public repository
+.local/
