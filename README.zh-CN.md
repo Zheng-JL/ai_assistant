@@ -14,6 +14,15 @@
   <a href="README.md">English</a> · 简体中文 · <a href="docs/privacy.zh-CN.md">隐私说明</a> · <a href="docs/architecture.md">架构</a> · <a href="CONTRIBUTING.md">贡献指南</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Zheng-JL/ai_assistant/actions/workflows/ci.yml"><img src="https://github.com/Zheng-JL/ai_assistant/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/macOS-14%2B-lightgrey.svg" alt="macOS 14+">
+  <img src="https://img.shields.io/badge/Swift-6-orange.svg" alt="Swift 6">
+  <img src="https://img.shields.io/badge/dependencies-none-brightgreen.svg" alt="No dependencies">
+</p>
+
+
 > **非官方项目。** 与 OpenAI、Anthropic 没有任何隶属、认可或赞助关系。“Codex”“ChatGPT”“Claude”是各自所有者的商标，这里只用来说明兼容对象。
 
 > **使用前请先看——兼容性。** 本工具读取的是 Codex Desktop 与 Claude Desktop 的**未公开本地文件**。目前只在 **macOS 26.6（Apple Silicon）**、**Codex Desktop 26.924.22138**、**Claude Desktop 2.16120.0**（Claude Code 引擎 2.1.284）上验证过。这两个应用以后更新都可能改变这些格式。工具的原则是“读不准就显示未知（`?` / `--`），绝不给错误的数字”，并自带健康检查告诉你原因；但大版本更新后，仍可能需要升级本工具。

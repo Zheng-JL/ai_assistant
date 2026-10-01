@@ -14,6 +14,15 @@
   English · <a href="README.zh-CN.md">简体中文</a> · <a href="docs/privacy.md">Privacy</a> · <a href="docs/architecture.md">Architecture</a> · <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Zheng-JL/ai_assistant/actions/workflows/ci.yml"><img src="https://github.com/Zheng-JL/ai_assistant/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/macOS-14%2B-lightgrey.svg" alt="macOS 14+">
+  <img src="https://img.shields.io/badge/Swift-6-orange.svg" alt="Swift 6">
+  <img src="https://img.shields.io/badge/dependencies-none-brightgreen.svg" alt="No dependencies">
+</p>
+
+
 > **Unofficial.** Not affiliated with, endorsed by, or sponsored by OpenAI or Anthropic. "Codex", "ChatGPT" and "Claude" are trademarks of their owners and are used here only to describe compatibility.
 
 > **Read this first — compatibility.** The app reads *undocumented* local files of Codex Desktop and Claude Desktop. It has been verified only on **macOS 26.6 (Apple Silicon)** with **Codex Desktop 26.924.22138** and **Claude Desktop 2.16120.0** (Claude Code engine 2.1.284). A future update of either app can change those formats. The app is built to show **unknown** (`?` / `--`) rather than a wrong number, and a built-in health check tells you why — but expect to need an update after big releases.
