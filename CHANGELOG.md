@@ -20,6 +20,9 @@ First public release (formerly an internal tool called "Codex Status").
 - Keep-awake while tasks run, launch at login, global shortcuts, and a built-in health check (`检查运行状况…` / `--health`).
 - Safe installer (`scripts/install.sh`): builds, tests, verifies the signature, backs up, replaces, and rolls back on failure.
 
+### Fixed
+- Builds with Xcode 16.4 / the macOS 15 SDK (notification APIs are used in a way that is valid under Swift 6 strict concurrency on older SDKs).
+
 ### Known limitations
 - Relies on undocumented local file formats of Codex Desktop and Claude Desktop.
 - Ad-hoc signed, not notarized.
